@@ -19,11 +19,11 @@ MainWindow::MainWindow(QWidget *parent)
     ui->listWidget_1->addItem("Ann");
     ui->listWidget_1->addItem("Bob");
     ui->listWidget_1->addItem("Rob");
-    //ui->listWidget_1->addItem("Mary");
+    ui->listWidget_1->addItem("Mary");
     ui->listWidget_2->addItem("Jason");
     ui->listWidget_2->addItem("Tom");
     ui->listWidget_2->addItem("Liz");
-    //ui->listWidget_2->addItem("Kim");
+    ui->listWidget_2->addItem("Kim");
 }
 
 MainWindow::~MainWindow(){
