@@ -32,26 +32,12 @@ MainWindow::~MainWindow(){
 
 void MainWindow::on_pushButton_2_clicked() //to right
 {
-    if (ui->listWidget_1->count()==0){
-        QMessageBox error;
-        error.setText("There is no elements in the 1st list");
-        error.exec();
-        return;
-    }
-    ui->listWidget_2->insertItem(0, ui->listWidget_1->takeItem(ui->listWidget_1->currentRow()));
-    ui->listWidget_1->setCurrentRow(-1);
+    moving(ui->listWidget_1, ui->listWidget_2);
 }
 
 void MainWindow::on_pushButton_1_clicked()  //to left
 {
-    if (ui->listWidget_2->count()==0){
-        QMessageBox error;
-        error.setText("There is no elements in the 2nd list");
-        error.exec();
-        return;
-    }
-    ui->listWidget_1->insertItem(0, ui->listWidget_2->takeItem(ui->listWidget_2->currentRow()));
-    ui->listWidget_2->setCurrentRow(-1);
+     moving(ui->listWidget_2, ui->listWidget_1);
 }
 
 void MainWindow::on_pushButton_3_clicked()
@@ -62,4 +48,16 @@ void MainWindow::on_pushButton_3_clicked()
 void MainWindow::on_pushButton_4_clicked()
 {
     ui->listWidget_2->sortItems(Qt::DescendingOrder);
+}
+
+void MainWindow::moving(QListWidget* From, QListWidget* To){
+    if (From->count()==0){
+        QMessageBox error;
+        error.setText("There is no elements in the list");
+        error.exec();
+        return;
+    }
+    QListWidgetItem *ItemFr = From->takeItem(From->currentRow());
+    To->insertItem(0,ItemFr);
+    From->setCurrentRow(-1);
 }
